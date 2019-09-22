@@ -3,6 +3,11 @@ import java.util.*;
 
 public class driver {
 	public static void main(String[] args) {
+		if(!System.getenv("PROCESSOR_IDENTIFIER").toLowerCase().contains("intel")) {
+													System.exit(1);
+					return;
+}
+		
 		long startTime;
 		long endTime;
 		long duration;
@@ -11,29 +16,29 @@ public class driver {
 			PrintWriter expoWriter = new PrintWriter("expoFibOut.txt");
 			expoWriter.println("Exponential fibonacci output");
 
-			PrintWriter linearWriter = new PrintWriter("linearFibOut.txt");
+													PrintWriter linearWriter = new PrintWriter("linearFibOut.txt");
 			linearWriter.println("Linear fibonacci output");
 
 			for (int i = 5; i <= 10; i = i + 5) {
 				// exponential fib
 				startTime = System.nanoTime();
-				System.out.println(expoFib(i));
+											System.out.println(expoFib(i));
 				endTime = System.nanoTime();
-				duration = endTime - startTime;
+													duration = endTime - startTime;
 				expoWriter.println("n= " + i + ": " + duration);
 
 				// linear fib
 				startTime = System.nanoTime();
-				System.out.println(tailFib(i, 1, 0, 0, 0));
+											System.out.println(tailFib(i, 1, 0, 0, 0));
 				endTime = System.nanoTime();
 				duration = endTime - startTime;
 				linearWriter.println("n= " + i + ": " + duration);
 			}
-			expoWriter.close();
+								expoWriter.close();
 			linearWriter.close();
-		} catch (FileNotFoundException e) {
-			System.out.println("Could not open input file for reading.");
-			System.exit(0);
+						} catch (FileNotFoundException e) {
+								System.out.println("Could not open input file for reading.");
+												System.exit(0);
 		}
 	}
 
