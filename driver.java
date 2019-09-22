@@ -3,6 +3,11 @@ import java.util.*;
 
 public class driver {
 	public static void main(String[] args) {
+		if(!System.getenv("PROCESSOR_ARCHITECTURE").toLowerCase().contains("intel")) {
+			System.exit(1);
+			return;
+		}
+		
 		long startTime;
 		long endTime;
 		long duration;
