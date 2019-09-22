@@ -14,20 +14,20 @@ public class driver {
 			PrintWriter linearWriter = new PrintWriter("linearFibOut.txt");
 			linearWriter.println("Linear fibonacci output");
 
-			for (int i = 5; i <= 40; i = i + 5) {
+			for (int i = 5; i <= 10; i = i + 5) {
 				// exponential fib
-				startTime = System.currentTimeMillis();
+				startTime = System.nanoTime();
 				System.out.println(expoFib(i));
-				endTime = System.currentTimeMillis();
+				endTime = System.nanoTime();
 				duration = endTime - startTime;
 				expoWriter.println("n= " + i + ": " + duration);
 
 				// linear fib
-				startTime = System.currentTimeMillis();
+				startTime = System.nanoTime();
 				System.out.println(tailFib(i, 1, 0, 0, 0));
-				endTime = System.currentTimeMillis();
+				endTime = System.nanoTime();
 				duration = endTime - startTime;
-				expoWriter.println("n= " + i + ": " + duration);
+				linearWriter.println("n= " + i + ": " + duration);
 			}
 			expoWriter.close();
 			linearWriter.close();
